@@ -1,0 +1,74 @@
+/*!
+ * CSS personalizado para Bootstrap.
+ * Copyright 2021 - Alejandro Alberto Sánchez Iturriaga.
+ */
+
+p {
+	font-family: 'Verdana';
+	font-size: small;
+}
+
+span,
+small {
+	font-family: 'Amaranth';
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Righteous';
+}
+
+h5,
+h6 {
+	font-family: 'Russo One';
+}
+
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+body {
+	margin: 0;
+	margin-bottom: 80px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
+	color: white;
+	padding-top: 2rem;
+	padding-bottom: 3rem;
+}
+
+header {
+	padding-top: 2.5rem;
+	padding-bottom: 0rem;
+}
+
+main {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+section {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+
+/* Estilo para la configuración del spinner de carga antes de mostrar el contenido de las páginas. */
+#spinner {
+	position: fixed;
+	z-index: 10000;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	background-color: #ffffff;
+	top: 0;
+	align-items: center;
+	justify-content: center;
+}
