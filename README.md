@@ -4,10 +4,10 @@
 * Fecha: `05-10-2021`
 
 ___
-### Versión lenguaje
+### Versión de Framework y lenguaje
 
-* PHP versión 5.3 en adelante, funciona perfectamente incluso la versión 7.4
 * Slim Framework versión 2.6.3
+* PHP versión 5.3 en adelante, funciona perfectamente incluso la versión 8.0.9
 
 ___
 ### Librerías instaladas
@@ -32,40 +32,36 @@ ___
     * Extensions: `Select versión 1.3.3`
 
 ___
-### Requisitos para instalar la aplicación
+### Instrucciones para instalar la aplicación
 
 * Clonar proyecto con el nombre `api-web`.
-* Crear una base de datos en Mysql con el nombre `api-web`. Luego, debe importar el archivo `database.sql` ubicado en el directorio `resource`.
+* Crear una base de datos en Mysql con el nombre `api-web`. Luego, debe importar el archivo `database.sql`, ubicado en el directorio `resource`.
+* La configuración de la conexión a la base de datos se encuentra en el archivo `Settings.php`, ubicado en el directorio `src/App`.
 
 ___
 ### Configuración para servidor Nginx
 
-Esta es una configuración de host virtual Nginx de ejemplo para el dominio `example.com`. Se espera conexiones entrantes HTTP en el puerto 80. Supone un servidor PHP-FPM se está ejecutando en el puerto 9000. Debe actualizar los `server_name`, `error_log`, `access_log`, y `root` directivas con sus propios valores. La `root` directiva es la ruta al directorio raíz de su aplicación; el `index.php` archivo del controlador frontal de su aplicación Slim debe estar en este directorio.
+* Esta es una configuración de host virtual Nginx de ejemplo para el dominio `http://localhost/`. Se espera conexiones entrantes HTTP en el puerto 80, y se supone un servidor PHP-FPM que se está ejecutando en el puerto `9002`.
+* Se agregó la siguiente configuración en el archivo `nginx.conf`, dentro de server {}. Se adjunta el archivo completo en el directorio `resource`.
 
-```text
-server {
-    listen 80;
-    server_name example.com;
-    index index.php;
-    error_log /path/to/example.error.log;
-    access_log /path/to/example.access.log;
-    root /path/to/public;
+    ```text
+    location /api-web {
+        try_files $uri /api-web/index.php$is_args$args;
 
-    location / {
-        try_files $uri /index.php$is_args$args;
+        ## Regular PHP processing.
+        location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+            fastcgi_index index.php;
+            fastcgi_pass 127.0.0.1:9002;
+        }
     }
+    ```
 
-    location ~ \.php {
-        try_files $uri =404;
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        fastcgi_param SCRIPT_NAME $fastcgi_script_name;
-        fastcgi_index index.php;
-        fastcgi_pass 127.0.0.1:9000;
-    }
-}
-```
+* Siguiendo el ejemplo, la url para acceder a la aplicación es `http://localhost/api-web`.
 
 ___
 ### Link de recursos

@@ -1,8 +1,0 @@
-#Desactiva el listado de directorios del servidor.
-Options -Indexes
-
-RewriteEngine On
-RewriteBase /api-web
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [QSA,L]

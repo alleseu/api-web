@@ -7,14 +7,14 @@ $app->container->set('database', function() {
 			"DB_HOST" => 'localhost',
 			"DB_NAME" => 'api-web',
 			"DB_USER" => 'root',
-			"DB_PASS" => '',
+			"DB_PASS" => '1234',
 			"DB_CHAR" => 'utf8'
 		),
 		'desarrollo' => array(
 			"DB_HOST" => 'localhost',
 			"DB_NAME" => 'api-web-dev',
 			"DB_USER" => 'root',
-			"DB_PASS" => '',
+			"DB_PASS" => '1234',
 			"DB_CHAR" => 'utf8'
 		)
 	);
