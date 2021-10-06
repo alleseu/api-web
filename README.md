@@ -37,6 +37,7 @@ ___
 * Clonar proyecto con el nombre `api-web`.
 * Crear una base de datos en Mysql con el nombre `api-web`. Luego, debe importar el archivo `database.sql`, ubicado en el directorio `resource`.
 * La configuración de la conexión a la base de datos se encuentra en el archivo `Settings.php`, ubicado en el directorio `src/App`.
+* Asignar permisos 777 al directorio `log`.
 
 ___
 ### Configuración para servidor Nginx
